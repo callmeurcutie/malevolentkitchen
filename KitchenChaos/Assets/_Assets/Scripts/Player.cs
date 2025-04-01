@@ -94,7 +94,8 @@ public class Player:MonoBehaviour
 		//Cannot move only on the X 
 
 		//Attemt only Z movement
-			Vector3 moveDirZ = new Vector3(0, 0, moveDir.z).normalized;
+			Vector3 moveDirZ
+				= new Vector3(0, 0, moveDir.z).normalized;
 			canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirZ, moveDistance);
 
 		if(canMove){
