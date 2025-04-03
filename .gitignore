@@ -17,6 +17,7 @@ ExportedObj/
 *.unityproj
 *.sln
 *.idea/
+*.unity
 *.suo
 *.tmp
 *.user
