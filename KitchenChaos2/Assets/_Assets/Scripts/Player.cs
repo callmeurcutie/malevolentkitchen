@@ -15,5 +15,20 @@ public class Player : MonoBehaviour
 
     float rotateSpeed = 10f;
     transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
+  } 
+
+
+  private void Awake(){
+  
+    if (gameInput == null)
+    {
+      Debug.LogError("GameInput reference is null. Please assign it in the Inspector.");
+    }
+    else
+    {
+      Debug.Log("GameInput reference is set correctly.");
+    }
+ 
   }
+
 }
