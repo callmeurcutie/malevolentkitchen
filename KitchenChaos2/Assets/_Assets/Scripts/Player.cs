@@ -135,6 +135,9 @@ public class Player : MonoBehaviour
 
   private void SetSelectedCounter(ClearCounter selectedCounter)
   {
+      
+      this.selectedCounter = selectedCounter;
+      
       OnSelectedCounterChanged?.Invoke(this, new OnSelectedCounterChangedEventArgs
       {
           selectedCounter = selectedCounter
