@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     
     private ClearCounter selectedCounter;
     
-    public EventHandler OnSelectedCounterChanged;
+    public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
     public class OnSelectedCounterChangedEventArgs : EventArgs
     {
         public ClearCounter selectedCounter;
