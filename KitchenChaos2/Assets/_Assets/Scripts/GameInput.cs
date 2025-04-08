@@ -4,7 +4,7 @@ using System;
 public class GameInput : MonoBehaviour
 {
     private PlayerInputActions playerInputActions;
-    public EventHandler OnInteractAction;
+    public event EventHandler OnInteractAction;
     
     private void Awake()
     {
