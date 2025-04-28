@@ -759,6 +759,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ContainerCounter (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2402684131409788011, guid: 811532458ae0addc9b03216bbf1e2a4a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 91e8fe3de9249fc44b7bdd8050062896, type: 3}
     - target: {fileID: 5249349850230529020, guid: 811532458ae0addc9b03216bbf1e2a4a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.5
@@ -799,6 +803,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5641538094932440834, guid: 811532458ae0addc9b03216bbf1e2a4a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641538094932440834, guid: 811532458ae0addc9b03216bbf1e2a4a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641538094932440834, guid: 811532458ae0addc9b03216bbf1e2a4a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.035
+      objectReference: {fileID: 0}
     - target: {fileID: 8610253020986189856, guid: 811532458ae0addc9b03216bbf1e2a4a, type: 3}
       propertyPath: counterTopPoint
       value: 
@@ -808,7 +824,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: b111672828a2e293c8db5661e8c3072c, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5669551698370088241, guid: 811532458ae0addc9b03216bbf1e2a4a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 811532458ae0addc9b03216bbf1e2a4a, type: 3}
