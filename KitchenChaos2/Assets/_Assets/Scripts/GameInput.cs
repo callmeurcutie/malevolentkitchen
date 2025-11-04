@@ -13,11 +13,11 @@ public class GameInput : MonoBehaviour
 
         playerInputActions.Player.Interact.performed += Interact_performed;
     }
+    
 
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        
-        OnInteractAction?.Invoke(this, EventArgs.Empty);
+       OnInteractAction?.Invoke(this, EventArgs.Empty);
     }
     public Vector2 GetMovementVectorNormalized()
     { 

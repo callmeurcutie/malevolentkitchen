@@ -8,7 +8,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
  
     [SerializeField] private GameInput gameInput;
-    [SerializeField] private float moveSpeed = 7f;
+    [SerializeField] private float moveSpeed = 100f;
     [SerializeField] private LayerMask countersLayerMask;
     [SerializeField] private Transform kitchenObjectHoldPoint;
     
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
     
     
-    float rotateSpeed = 10f;
+    float rotateSpeed = 20f;
     float playerRadius = .7f;
     float playerHeight = 2f;
     private Vector3 lastInteractDir;
@@ -48,21 +48,36 @@ public class Player : MonoBehaviour, IKitchenObjectParent
       HandleInteractions();
   }
 
-  private void Start()
-  {
-      gameInput.OnInteractAction += GameInput_OnInteractAction;
-  }
 
-  private void GameInput_OnInteractAction(object sender, System.EventArgs e)
-  {
-      if (selectedCounter != null)
-      {
-          selectedCounter.Interact(this);
-      }
-  }
+    private void Start()
+    {
+        gameInput.OnInteractAction += GameInput_OnInteractAction;
+    }
+
+    private void GameInput_OnInteractAction(object sender, System.EventArgs e)
+    {
+        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+
+        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
+
+        if (moveDir != Vector3.zero)
+        {
+            lastInteractDir = moveDir;
+        }
+
+        float interactDistance = 2f;
+        if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit hit, interactDistance,
+                countersLayerMask))
+        {
+            if (hit.transform.TryGetComponent(out BaseCounter baseCounter))
+            {
+                Debug.Log("Interact");
+            }
+        }
+    }
 
 
-  private void HandleMovement()
+    private void HandleMovement()
   {
     
       float moveDistance = moveSpeed * Time.deltaTime;
@@ -109,6 +124,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
   {
       
       Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+      
       Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
 
       if (moveDir != Vector3.zero)
@@ -117,11 +133,10 @@ public class Player : MonoBehaviour, IKitchenObjectParent
       }
 
       float interactDistance = 2f;
-      if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit raycastHit, interactDistance,countersLayerMask))
+      if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit hit, interactDistance, countersLayerMask))
       {
-          if(raycastHit.transform.TryGetComponent(out BaseCounter baseCounter))
+          if (hit.transform.TryGetComponent(out BaseCounter baseCounter))
           {
-              //has ClearCounter
               if (baseCounter != selectedCounter)
               {
                   SetSelectedCounter(baseCounter);
@@ -130,7 +145,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
           else
           {
               SetSelectedCounter(null);
-          } 
+          }
       }
       else
       {
