@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Player : MonoBehaviour, IKitchenObjectParent
+public class Player : MonoBehaviour
 {
 
  
@@ -12,24 +12,20 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     [SerializeField] private LayerMask countersLayerMask;
     [SerializeField] private Transform kitchenObjectHoldPoint;
     
-   
-    
     public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
     public class OnSelectedCounterChangedEventArgs : EventArgs
     {
-        public BaseCounter selectedCounter;
+        public ClearCounter selectedCounter;
     }
 
     public static Player Instance { get; private set; }
-
-    
     
     float rotateSpeed = 20f;
     float playerRadius = .7f;
     float playerHeight = 2f;
     private Vector3 lastInteractDir;
-    private BaseCounter selectedCounter;
-    private KitchenObject kitchenObject;
+    private ClearCounter selectedCounter;
+  
     
 
     private void Awake()
@@ -56,23 +52,9 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
     private void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
-        Vector2 inputVector = gameInput.GetMovementVectorNormalized();
-
-        Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
-
-        if (moveDir != Vector3.zero)
+        if (selectedCounter != null)
         {
-            lastInteractDir = moveDir;
-        }
-
-        float interactDistance = 2f;
-        if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit hit, interactDistance,
-                countersLayerMask))
-        {
-            if (hit.transform.TryGetComponent(out BaseCounter baseCounter))
-            {
-                Debug.Log("Interact");
-            }
+            selectedCounter.Interact();
         }
     }
 
@@ -135,11 +117,11 @@ public class Player : MonoBehaviour, IKitchenObjectParent
       float interactDistance = 2f;
       if (Physics.Raycast(transform.position, lastInteractDir, out RaycastHit hit, interactDistance, countersLayerMask))
       {
-          if (hit.transform.TryGetComponent(out BaseCounter baseCounter))
+          if (hit.transform.TryGetComponent(out ClearCounter clearCounter))
           {
-              if (baseCounter != selectedCounter)
+              if (clearCounter != selectedCounter)
               {
-                  SetSelectedCounter(baseCounter);
+                  SetSelectedCounter(clearCounter);
               }
           }
           else
@@ -153,7 +135,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
       }
   }
 
-  private void SetSelectedCounter(BaseCounter selectedCounter)
+  private void SetSelectedCounter(ClearCounter selectedCounter)
   {
       
       this.selectedCounter = selectedCounter;
@@ -166,29 +148,5 @@ public class Player : MonoBehaviour, IKitchenObjectParent
   
   
 
-  public Transform GetKitchenObjectFollowTransform()
-  {
-      return kitchenObjectHoldPoint;
-  }
-
-  public void SetKitchenObject(KitchenObject kitchenObject)
-  {
-      this.kitchenObject = kitchenObject;
-  }
-
-  public KitchenObject GetKitchenObject()
-  {
-      return kitchenObject;
-  }
-
-  public void ClearKitchenObject()
-  {
-      kitchenObject = null;
-  }
-
-  public bool HasKitchenObject()
-  {
-      return kitchenObject != null;
-  }
-
+  
 }
