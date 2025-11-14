@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21ee8b8bed9af18209f91c831d50d19c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelectedCounterVisual
-  baseCounter: {fileID: 0}
+  baseCounter: {fileID: 8423774288983161052}
   visualGameObjectArray:
   - {fileID: 8347960516498697303}
   - {fileID: 745489207523811241}
@@ -199,8 +199,38 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6890601525834715161, guid: 87e13ebc2baea677dab9a1067de42177, type: 3}
       insertIndex: -1
       addedObject: {fileID: 663732948536346605}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2085562680390304125, guid: 87e13ebc2baea677dab9a1067de42177, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8423774288983161052}
   m_SourcePrefab: {fileID: 100100000, guid: 87e13ebc2baea677dab9a1067de42177, type: 3}
+--- !u!1 &2739750110956953183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2085562680390304125, guid: 87e13ebc2baea677dab9a1067de42177, type: 3}
+  m_PrefabInstance: {fileID: 4248271039476588322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8423774288983161052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2739750110956953183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4393a8110ae834787d44ff9acb6ec1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StoveCounter
+  counterTopPoint: {fileID: 3197012884675517874}
+  fryingRecipeSOArray:
+  - {fileID: 11400000, guid: e4390963092d3e6e7a5b61339d5c06ee, type: 2}
+  burningRecipeSOArray:
+  - {fileID: 11400000, guid: f14510eb5335465e0a20346ab190028a, type: 2}
+--- !u!4 &3197012884675517874 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1633388600701387408, guid: 87e13ebc2baea677dab9a1067de42177, type: 3}
+  m_PrefabInstance: {fileID: 4248271039476588322}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7301656148941229883 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6890601525834715161, guid: 87e13ebc2baea677dab9a1067de42177, type: 3}
